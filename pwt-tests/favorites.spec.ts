@@ -5,16 +5,15 @@ test.describe('Favorites', () => {
   test('Checking for redirection when clicking on a bookmark', async ({ page }) => {
     await page.goto('http://localhost:5173/');
 
-    await page.waitForSelector('.header__nav-link');
-    const linkButton = await page.$('.header__nav-link');
-    const logoutButton = await page.$('.header__signout');
+    const linkButton = page.locator('.header__nav-link');
+    const logoutButton = await page.locator('.header__signout').isVisible();
 
     if (logoutButton) {
-      await linkButton?.click();
+      await linkButton.click();
     }
 
     await page.waitForSelector('.bookmark-button');
-    await page.click('.bookmark-button');
+    await page.locator('.bookmark-button').first().click();
 
     const url = page.url();
     expect(url).toBe('http://localhost:5173/login');
@@ -23,12 +22,11 @@ test.describe('Favorites', () => {
   test('Checking for redirection when going to favorites page', async ({ page }) => {
     await page.goto('http://localhost:5173/');
 
-    await page.waitForSelector('.header__nav-link');
-    const linkButton = await page.$('.header__nav-link');
-    const logoutButton = await page.$('.header__signout');
+    const linkButton = page.locator('.header__nav-link');
+    const logoutButton = await page.locator('.header__signout').isVisible();
 
     if (logoutButton) {
-      await linkButton?.click();
+      await linkButton.click();
     }
 
     await page.goto('http://localhost:5173/favorites');

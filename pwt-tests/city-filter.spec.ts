@@ -1,4 +1,4 @@
-import { test, expect, ElementHandle } from '@playwright/test';
+import { test, Locator } from '@playwright/test';
 
 test.describe('City filter', () => {
 
@@ -7,14 +7,13 @@ test.describe('City filter', () => {
     await page.goto('http://localhost:5173/');
     await page.waitForSelector('.locations__item-link');
 
-    const offersList: ElementHandle<SVGElement | HTMLElement>[] = [];
+    const offersList: Locator[] = [];
 
-    const citiesButtons = await page.$$('.locations__item-link');
+    const citiesButtons = await page.locator('.locations__item-link').all();
     for (const cityButton of citiesButtons) {
       await cityButton.click();
-      await page.waitForSelector('.cities__card');
 
-      const cityCards = await page.$$('.cities__card');
+      const cityCards = await page.locator('.cities__card').all();
       cityCards.forEach((card => {
         if (offersList.includes(card)) {
           throw new Error("Duplicate card found");
