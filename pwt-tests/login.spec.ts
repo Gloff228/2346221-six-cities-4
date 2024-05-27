@@ -1,8 +1,9 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Login Form', () => {
-  test('should successfully login with valid credentials', async ({ page }) => {
-    await page.goto('http://localhost:5173');
+
+  test('Verifying login with correct data', async ({ page }) => {
+    await page.goto('http://localhost:5173/');
 
     await page.waitForSelector('.header__nav-link');
     const linkButton = await page.$('.header__nav-link');
@@ -24,10 +25,10 @@ test.describe('Login Form', () => {
     expect(url).toBe('http://localhost:5173/');
   });
 
-  test('should display error message with invalid password', async ({
+  test('Checking for errors when logging in with incorrect data', async ({
     page,
   }) => {
-    await page.goto('http://localhost:5173');
+    await page.goto('http://localhost:5173/');
 
     await page.waitForSelector('.header__nav-link');
     const linkButton = await page.$('.header__nav-link');

@@ -84,7 +84,7 @@ function CommentForm({ id }: CommentFromProps): JSX.Element {
               value={ratingStar}
               id={`${ratingStar}-stars`}
               type="radio"
-              disabled={disabledSubmitButton}
+              disabled={isLoading}
               onChange={handleRatingChange}
               checked={review.rating === Number(ratingStar)}
             />
