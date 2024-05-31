@@ -45,8 +45,8 @@ test.describe('Favorites', () => {
     if (loginButton) {
       await linkButton?.click();
 
-      await page.fill('input[name="email"]', 'correctEmail@gmail.com');
-      await page.fill('input[name="password"]', 'correctPassword123');
+      await page.fill('input[name="email"]', 'CorrectEmail@gmail.com');
+    await page.fill('input[name="password"]', 'correctPassword123');
 
       await page.click('button[type="submit"]');
       await page.waitForURL('http://localhost:5173/');

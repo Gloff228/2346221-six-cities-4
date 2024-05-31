@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Favorites', () => {
+test.describe('Comment', () => {
   test('Checking the functionality of the comment submission form', async ({ page }) => {
     const reviewText = 'This is a place for dreamers to reset, reflect, and create.';
     const rating = 'good';
@@ -14,7 +14,7 @@ test.describe('Favorites', () => {
     if (loginButton) {
       await linkButton?.click();
 
-      await page.fill('input[name="email"]', 'сorrectEmail@gmail.com');
+      await page.fill('input[name="email"]', 'CorrectEmail@gmail.com');
       await page.fill('input[name="password"]', 'сorrectPassword123');
 
       await page.click('button[type="submit"]');
